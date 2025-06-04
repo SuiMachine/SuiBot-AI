@@ -22,6 +22,17 @@ namespace SuiBotAI.Components
 			public string Private;
 		}
 
+		public class SafetyFilterTrippedException : Exception
+		{
+			public SafetyFilterTrippedException() { }
+			public SafetyFilterTrippedException(string message) : base(message)
+			{
+				SafetyTriped = message;
+			}
+
+			public string SafetyTriped;
+		}
+
 		private readonly string m_API_Key;
 		private readonly string m_Model;
 
@@ -54,6 +65,12 @@ namespace SuiBotAI.Components
 				else
 				{
 					GeminiResponse response = JsonConvert.DeserializeObject<GeminiResponse>(result);
+					if (response == null)
+						throw new NullReferenceException("Failed to deserialize response");
+
+					var stopReason = response.candidates.Last().finishReason;
+					if (stopReason == "SAFETY")
+						throw new SafetyFilterTrippedException();
 					return response;
 				}
 			}

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
@@ -20,6 +21,8 @@ namespace SuiBotAI.Components.Other.Gemini
 		}
 
 		public List<GeminiMessage> contents;
+		[XmlIgnore][JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public GeminiSafetySettingsCategory[] safetySettings;
+
 		[XmlIgnore]	public GeminiMessage systemInstruction;
 
 		[XmlIgnore]
@@ -28,6 +31,39 @@ namespace SuiBotAI.Components.Other.Gemini
 
 		public GenerationConfig generationConfig;
 	}
+
+	public class GeminiSafetySettingsCategory
+	{
+		public string category;
+		[JsonConverter(typeof(StringEnumConverter))]
+		public AISafetySettingsValues threshold;
+		[XmlIgnore]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+		public List<GeminiTools> tools;
+
+		public static List<GeminiTools> GetTools()
+		{
+			return new List<GeminiTools>()
+			{
+				new GeminiTools()
+			};
+		}
+
+		public enum AISafetySettingsValues
+		{
+			BLOCK_NONE,
+			BLOCK_ONLY_HIGH, //Block few
+			BLOCK_MEDIUM_AND_ABOVE, //Block some
+			BLOCK_LOW_AND_ABOVE //Block Most
+		}
+
+		public GeminiSafetySettingsCategory(string category, AISafetySettingsValues safety)
+		{
+			this.category = category;
+			this.threshold = safety;
+		}
+	}
+
 
 	[Serializable]
 	public class GeminiResponse
