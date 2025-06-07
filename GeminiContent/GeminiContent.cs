@@ -23,7 +23,7 @@ namespace SuiBotAI.Components.Other.Gemini
 		public List<GeminiMessage> contents;
 		[XmlIgnore][JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public GeminiSafetySettingsCategory[] safetySettings;
 
-		[XmlIgnore]	public GeminiMessage systemInstruction;
+		[XmlIgnore] public GeminiMessage systemInstruction { get; internal set; }
 
 		[XmlIgnore]
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]

@@ -53,7 +53,7 @@ namespace SuiBotAI.Components
 
 				content.contents.Add(GeminiMessage.CreateUserResponse(user_mesage));
 
-				string json = JsonConvert.SerializeObject(content);
+				string json = JsonConvert.SerializeObject(content, Formatting.Indented);
 
 				string result = await HttpWebRequestHandlers.PerformPostAsync("https://generativelanguage.googleapis.com/", $"v1beta/{m_Model}:generateContent", $"?key={m_API_Key}",
 					json,
