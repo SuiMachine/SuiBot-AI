@@ -42,7 +42,7 @@ namespace SuiBotAI.Components
 			m_Model = Model;
 		}
 
-		public async Task<GeminiResponse> GetAIResponse(GeminiContent content, GeminiMessage systemInstruction, string user_mesage)
+		public async Task<GeminiResponse> GetAIResponse(GeminiContent content, GeminiMessage systemInstruction, string user_mesage, Role role = Role.user)
 		{
 			try
 			{

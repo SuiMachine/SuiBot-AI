@@ -20,7 +20,7 @@ namespace SuiBotAI.Components.Other.Gemini
 			[XmlIgnore] public string responseMimeType = "text/plain";
 		}
 
-		public List<GeminiMessage> contents;
+		public List<GeminiMessage> contents = new List<GeminiMessage>();
 		[XmlIgnore][JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public GeminiSafetySettingsCategory[] safetySettings;
 
 		[XmlIgnore] public GeminiMessage systemInstruction { get; internal set; }
@@ -30,6 +30,7 @@ namespace SuiBotAI.Components.Other.Gemini
 		public List<GeminiTools> tools;
 
 		public GenerationConfig generationConfig;
+		[XmlIgnore][JsonIgnore][NonSerialized] public string StorePath;
 	}
 
 	public class GeminiSafetySettingsCategory

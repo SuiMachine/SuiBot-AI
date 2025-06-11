@@ -35,7 +35,7 @@ namespace SuiBotAI.Components.Other.Gemini
 	public class GeminiResponseMessagePart
 	{
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public string text = null;
-		[XmlIgnore][JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public GeminiResponseFunctionCall functionCall = null;
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public GeminiResponseFunctionCall functionCall = null;
 	}
 
 	[Serializable]
@@ -49,6 +49,7 @@ namespace SuiBotAI.Components.Other.Gemini
 	public enum Role
 	{
 		user,
-		model
+		model,
+		tool
 	}
 }
