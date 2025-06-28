@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AIMessageUtils.cs" />
     <Compile Include="ErrorLogging.cs" />
     <Compile Include="SuiBotAI.cs" />
     <Compile Include="GeminiContent\FunctionTypes\Parameters.cs" />
