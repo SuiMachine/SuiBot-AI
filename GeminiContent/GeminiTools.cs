@@ -70,6 +70,8 @@ namespace SuiBotAI.Components.Other.Gemini
 						newGeminiFunction.parameters.properties.Add(fieldToProcess.Name, new Gemini_Parameter_Type.Parameter_String());
 					else if (fieldType == typeof(bool))
 						newGeminiFunction.parameters.properties.Add(fieldToProcess.Name, new Gemini_Parameter_Type.Parameter_Number());
+					else if (fieldType == typeof(byte) || fieldType == typeof(uint) || fieldType == typeof(int) || fieldType == typeof(float) || fieldType == typeof(double))
+						newGeminiFunction.parameters.properties.Add(fieldToProcess.Name, new Gemini_Parameter_Type.Parameter_Number());
 					else
 						throw new Exception("Unhandled conversion type");
 
