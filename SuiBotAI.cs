@@ -71,6 +71,8 @@ namespace SuiBotAI.Components
 					var stopReason = response.candidates.Last().finishReason;
 					if (stopReason == "SAFETY")
 						throw new SafetyFilterTrippedException();
+					else if (stopReason == "MAX_TOKENS")
+						throw new FailedToGetResponseException("Reached max token limit!");
 					return response;
 				}
 			}
