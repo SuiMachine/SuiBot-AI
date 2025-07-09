@@ -1,6 +1,6 @@
 # SuiBot-AI
 
-A .NET 9.0 library designed to simplify communication with Gemini AI (and possibly other services in the future).
+A .NET 8.0 library designed to simplify communication with Gemini AI (and possibly other services in the future).
 
 Credits
 -------
