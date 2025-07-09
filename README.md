@@ -1,12 +1,11 @@
 # SuiBot-AI
 
-A .NET Framework compatible library for 
+A .NET 8.0 library designed to simplify communication with Gemini AI (and possibly other services in the future).
 
 Credits
 -------
   * [Sui](https://www.twitch.tv/sui_vt)
-  * Bot uses [Newtonsoft.Json](https://www.newtonsoft.com/json) for JSON serialisation.
-  * Bot uses [SuiBot-TwitchSocket]https://github.com/SuiMachine/SuiBot-TwitchSocket)
+  * Library uses [Newtonsoft.Json](https://www.newtonsoft.com/json) for JSON serialisation.
 
 Licence
 -------
