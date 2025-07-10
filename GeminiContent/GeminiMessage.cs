@@ -13,11 +13,11 @@ namespace SuiBotAI.Components.Other.Gemini
 		public Role role;
 		public GeminiResponseMessagePart[] parts;
 
-		public static GeminiMessage CreateUserResponse(string contentToAsk)
+		public static GeminiMessage CreateMessage(string contentToAsk, Role role)
 		{
 			return new GeminiMessage()
 			{
-				role = Role.user,
+				role = role,
 				parts = new GeminiResponseMessagePart[]
 				{
 					new GeminiResponseMessagePart()
@@ -50,6 +50,7 @@ namespace SuiBotAI.Components.Other.Gemini
 	{
 		user,
 		model,
-		tool
+		tool,
+		summery
 	}
 }

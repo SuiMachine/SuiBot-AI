@@ -42,7 +42,7 @@ namespace SuiBotAI.Components
 			m_Model = Model;
 		}
 
-		public async Task<GeminiResponse> GetAIResponse(GeminiContent content, GeminiMessage systemInstruction, string user_mesage, Role role = Role.user)
+		public async Task<GeminiResponse> GetAIResponse(GeminiContent content, GeminiMessage systemInstruction, string user_mesage, Role role)
 		{
 			try
 			{
@@ -51,7 +51,7 @@ namespace SuiBotAI.Components
 				if (content == null)
 					throw new ArgumentNullException("Content was null!");
 
-				content.contents.Add(GeminiMessage.CreateUserResponse(user_mesage));
+				content.contents.Add(GeminiMessage.CreateMessage(user_mesage, role));
 
 				string json = JsonConvert.SerializeObject(content, Formatting.Indented);
 
