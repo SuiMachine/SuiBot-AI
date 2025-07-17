@@ -42,7 +42,7 @@ namespace SuiBotAI.Components
 			m_Model = Model;
 		}
 
-		public async Task<GeminiResponse> GetAIResponse(GeminiContent content, GeminiMessage systemInstruction, string user_mesage, Role role)
+		public async Task<GeminiResponse> GetAIResponse(GeminiContent content, GeminiMessage systemInstruction, GeminiMessage messageToAppend)
 		{
 			try
 			{
@@ -51,7 +51,8 @@ namespace SuiBotAI.Components
 				if (content == null)
 					throw new ArgumentNullException("Content was null!");
 
-				content.contents.Add(GeminiMessage.CreateMessage(user_mesage, role));
+
+				content.contents.Add(messageToAppend);
 
 				string json = JsonConvert.SerializeObject(content, Formatting.Indented);
 
@@ -73,6 +74,7 @@ namespace SuiBotAI.Components
 						throw new SafetyFilterTrippedException();
 					else if (stopReason == "MAX_TOKENS")
 						throw new FailedToGetResponseException("Reached max token limit!");
+
 					return response;
 				}
 			}

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SuiBotAI.Components;
 using SuiBotAI.Components.Other.Gemini;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,11 @@ namespace SuiBotAI
 				}
 			}
 			return convertedMessages;
+		}
+
+		public static void SummarizeMessages(SuiBotAIProcessor processor, GeminiContent content)
+		{
+
 		}
 	}
 }

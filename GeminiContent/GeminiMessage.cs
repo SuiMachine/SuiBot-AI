@@ -27,6 +27,28 @@ namespace SuiBotAI.Components.Other.Gemini
 				}
 			};
 		}
+
+		public static GeminiMessage CreateFunctionCallResponse(string functionName, string functionResponse)
+		{
+			return new GeminiMessage()
+			{
+				role = Role.user,
+				parts = new GeminiResponseMessagePart[]
+				{
+					new GeminiResponseMessagePart()
+					{
+						functionResponse = new GeminiFunctionResponse()
+						{
+							name = functionName,
+							response = new GeminiFunctionResponse.GeminiFunctionResponseRawTex
+							{
+								content = functionResponse
+							}
+						}
+					}
+				}
+			};
+		}
 	}
 
 
@@ -36,6 +58,7 @@ namespace SuiBotAI.Components.Other.Gemini
 	{
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public string text = null;
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public GeminiResponseFunctionCall functionCall = null;
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public GeminiFunctionResponse functionResponse = null;
 	}
 
 	[Serializable]
@@ -45,12 +68,22 @@ namespace SuiBotAI.Components.Other.Gemini
 		[XmlIgnore] public JToken args = null;
 	}
 
+	[Serializable]
+	public class GeminiFunctionResponse
+	{
+		public class GeminiFunctionResponseRawTex
+		{
+			public string content = "";
+		}
+
+		public string name = "";
+		public GeminiFunctionResponseRawTex response = null;
+	}
 
 	public enum Role
 	{
 		user,
 		model,
-		tool,
 		summery
 	}
 }
