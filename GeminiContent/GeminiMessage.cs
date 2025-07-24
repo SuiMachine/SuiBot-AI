@@ -49,6 +49,28 @@ namespace SuiBotAI.Components.Other.Gemini
 				}
 			};
 		}
+
+		public static GeminiMessage CreateInlineData(string mimeType, byte[] bytes)
+		{
+			if (bytes.Length > 20_000_000)
+				throw new Exception("Too much data to send!");
+
+			return new GeminiMessage()
+			{
+				role = Role.user,
+				parts = new GeminiResponseMessagePart[]
+				{
+					new GeminiResponseMessagePart()
+					{
+						inlineData = new GeminiResponseInlineData()
+						{
+							mimeType =mimeType,
+							data = Convert.ToBase64String(bytes)
+						}
+					}
+				}
+			};
+		}
 	}
 
 
@@ -59,6 +81,7 @@ namespace SuiBotAI.Components.Other.Gemini
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public string text = null;
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public GeminiResponseFunctionCall functionCall = null;
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public GeminiFunctionResponse functionResponse = null;
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public GeminiResponseInlineData inlineData = null;
 	}
 
 	[Serializable]
@@ -78,6 +101,13 @@ namespace SuiBotAI.Components.Other.Gemini
 
 		public string name = "";
 		public GeminiFunctionResponseRawTex response = null;
+	}
+
+	[Serializable]
+	public class GeminiResponseInlineData
+	{
+		public string mimeType = "";
+		public string data = "";
 	}
 
 	public enum Role
