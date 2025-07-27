@@ -28,7 +28,7 @@ namespace SuiBotAI
 			foreach (var chunk in chunks)
 			{
 				var role = chunk["role"].ToObject<Role>();
-				var messageTokens = chunk["tokenCount"].Value<ulong>();
+				var messageTokens = chunk["tokenCount"]?.Value<ulong>() ?? 0;
 				tokenCount += messageTokens;
 
 				if (chunk["text"] != null)
