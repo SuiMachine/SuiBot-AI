@@ -59,10 +59,5 @@ namespace SuiBotAI
 			}
 			return convertedMessages;
 		}
-
-		public static void SummarizeMessages(SuiBotAIProcessor processor, GeminiContent content)
-		{
-
-		}
 	}
 }
