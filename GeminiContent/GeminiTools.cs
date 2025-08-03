@@ -68,7 +68,7 @@ namespace SuiBotAI.Components.Other.Gemini
 					var fieldType = fieldToProcess.FieldType;
 					if (fieldType == typeof(string))
 						newGeminiFunction.parameters.properties.Add(fieldToProcess.Name, new Gemini_Parameter_Type.Parameter_String());
-					else if (fieldType == typeof(bool))
+					else if (fieldType == typeof(bool) || fieldType == typeof(bool?))
 						newGeminiFunction.parameters.properties.Add(fieldToProcess.Name, new Gemini_Parameter_Type.Parameter_Number());
 					else if (fieldType == typeof(byte) || fieldType == typeof(uint) || fieldType == typeof(int) || fieldType == typeof(float) || fieldType == typeof(double))
 						newGeminiFunction.parameters.properties.Add(fieldToProcess.Name, new Gemini_Parameter_Type.Parameter_Number());

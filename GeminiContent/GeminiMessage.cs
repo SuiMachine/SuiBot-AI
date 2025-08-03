@@ -88,7 +88,7 @@ namespace SuiBotAI.Components.Other.Gemini
 	public class GeminiResponseFunctionCall
 	{
 		public string name = "";
-		[XmlIgnore] public JToken args = null;
+		[XmlIgnore][JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public JToken args = null;
 	}
 
 	[Serializable]

@@ -90,7 +90,7 @@ namespace SuiBotAI.Components
 
 		public static void CleanupResponse(ref string text)
 		{
-			List<string> splitText = text.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+			List<string> splitText = text.Split(['\n', '\r'], StringSplitOptions.RemoveEmptyEntries).ToList();
 			for (int i = splitText.Count - 1; i >= 0; i--)
 			{
 				var line = splitText[i].Trim();
@@ -132,7 +132,7 @@ namespace SuiBotAI.Components
 					{
 						var length = i - endIndex;
 						var substring = text.Substring(i + 1, endIndex - i - 1);
-						if (substring.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length > 5)
+						if (substring.Split([' '], StringSplitOptions.RemoveEmptyEntries).Length > 5)
 						{
 							text = text.Remove(i, endIndex - i + 1);
 						}
