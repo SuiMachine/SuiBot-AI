@@ -10,6 +10,18 @@ namespace SuiBotAI.Components
 {
 	public class SuiBotAIProcessor
 	{
+		public class UnexpectedToolCallException : Exception
+		{
+			public UnexpectedToolCallException() { }
+			public UnexpectedToolCallException(string message) : base(message)
+			{
+				Private = message;
+			}
+
+			public string PublicMessage;
+			public string Private;
+		}
+
 		public class FailedToGetResponseException : Exception
 		{
 			public FailedToGetResponseException() { }
