@@ -1,4 +1,6 @@
-# SuiBot-AI
+# SuiBot-AI (Archive)
+
+This project is no longer supported, due to the amount of damage AI does to society.
 
 A .NET 8.0 library designed to simplify communication with Gemini AI (and possibly other services in the future).
 
